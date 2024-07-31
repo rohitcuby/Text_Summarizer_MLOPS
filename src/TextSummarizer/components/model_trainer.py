@@ -27,13 +27,14 @@ class ModelTrainer:
             per_device_train_batch_size=1, per_device_eval_batch_size=1,
             weight_decay=0.01, logging_steps=10,
             evaluation_strategy='steps', eval_steps=500, save_steps=1e6,
-            gradient_accumulation_steps=16
+            gradient_accumulation_steps=16,
+            no_cuda=True 
         ) 
 
         trainer = Trainer(model=model_pegasus, args=trainer_args,
                   tokenizer=tokenizer, data_collator=seq2seq_data_collator,
-                  train_dataset=dataset_samsum_pt["train"], 
-                  eval_dataset=dataset_samsum_pt["validation"])
+                  train_dataset=dataset_samsum_pt["train"].select(range(100)),   #using only 100 rows as data is big taking two much time to train in my computer
+                  eval_dataset=dataset_samsum_pt["validation"].select(range(10)))
         
         trainer.train()
 
