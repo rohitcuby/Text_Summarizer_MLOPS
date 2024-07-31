@@ -4,6 +4,7 @@ datasets
 sacrebleu  #for raw matrix 
 rouge_score
 py7zr
+flask
 pandas
 nltk
 tqdm
@@ -15,8 +16,6 @@ boto3
 mypy-boto3-s3
 python-box
 ensure
-fastapi
-uvicorn
 Jinja2
 -e .
 # python-box==6.0.2
