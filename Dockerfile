@@ -18,6 +18,9 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Run the application
-CMD ["python3", "main.py"]  
-CMD ["python3", "app.py"]
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
