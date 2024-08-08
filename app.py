@@ -17,5 +17,5 @@ def predict():
     summary = pipeline.predict(text)
     return jsonify({'summary': summary})
 
-if __name__ == '__main__':  #something like python main
+if __name__ == '__main__':  #something like 
     app.run(host="0.0.0.0",port=8080)
