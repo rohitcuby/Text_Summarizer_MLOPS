@@ -5,11 +5,11 @@ app = Flask(__name__)
 pipeline = PredictionPipeline()
 
 @app.route('/')
-async def home():
+def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
-async def predict():
+def predict():
     data = request.get_json()
     text = data.get('text', '')
     if not text:
